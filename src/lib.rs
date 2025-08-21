@@ -382,6 +382,10 @@ where
     ///
     /// 當程式處理完請求後，會依程式定義將結果儲存至本資料結構中
     pub result: RES,
+    /// 點位初始狀態
+    ///
+    /// 當點位尚未取得最新數值時，預設顯示的狀態
+    pub default_status: Option<Value>,
     /// 是否要自動更新
     pub auto_refresh: bool,
     /// 點位統計數據
