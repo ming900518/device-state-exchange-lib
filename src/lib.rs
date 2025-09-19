@@ -261,7 +261,7 @@ pub trait Connection: Sized + Send + 'static {
     fn preprocess(
         &self,
         request: Self::Request,
-        new_status: Option<String>,
+        new_status: Option<Value>,
     ) -> Result<Self::Request, Box<dyn std::error::Error>> {
         Ok(request)
     }
