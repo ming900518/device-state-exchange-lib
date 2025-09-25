@@ -494,7 +494,7 @@ impl TargetStats {
         let orig_polling_count = self
             .0
             .total_polling_count
-            .fetch_add(1, std::sync::atomic::Ordering::Acquire);
+            .fetch_add(1, std::sync::atomic::Ordering::AcqRel);
 
         let orig_failed_poll_count = self
             .0
@@ -519,11 +519,11 @@ impl TargetStats {
     pub fn record_failure(&self) {
         self.0
             .total_polling_count
-            .fetch_add(1, std::sync::atomic::Ordering::Acquire);
+            .fetch_add(1, std::sync::atomic::Ordering::AcqRel);
 
         self.0
             .failed_poll_count
-            .fetch_add(1, std::sync::atomic::Ordering::Acquire);
+            .fetch_add(1, std::sync::atomic::Ordering::AcqRel);
     }
 
     pub fn get_latest_value(&self) -> (i64, i64, i64) {
